@@ -2,10 +2,17 @@
 
 
 // Declare app level module which depends on filters, and services
-var app = angular.module('myApp', ['myApp.filters', 'myApp.services', 'myApp.directives']).
-  config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
-    $routeProvider.when('/view1', {templateUrl: 'partials/partial1', controller: MyCtrl1});
-    $routeProvider.when('/view2', {templateUrl: 'partials/partial2', controller: MyCtrl2});
-    $routeProvider.otherwise({redirectTo: '/view1'});
+angular.module('ummon', ['ummon.services'])
+  .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+
+    $routeProvider
+      .when('/', {
+        templateUrl: 'partials/tasks',
+        controller: TasksCtrl
+      })
+      .otherwise({
+        redirectTo: '/'
+      });
+
     $locationProvider.html5Mode(true);
   }]);

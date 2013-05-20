@@ -2,20 +2,20 @@
 
 /* Controllers */
 
-function AppCtrl($scope, socket) {
-  socket.on('send:name', function (data) {
-    $scope.name = data.name;
-  });
+function AppCtrl($scope) {
+  // socket.on('send:name', function (data) {
+  //   $scope.name = data.name;
+  // });
 }
 
-function MyCtrl1($scope, socket) {
-  socket.on('send:time', function (data) {
-    $scope.time = data.time;
-  });
+function TasksCtrl($scope, Task) {
+  $scope.tasks = Task.query();
 }
-MyCtrl1.$inject = ['$scope', 'socket'];
 
+function PsCtrl($scope, Ps) {
+  $scope.ps = Ps.query();
 
-function MyCtrl2() {
+  $scope.poll = window.setInterval(function(){
+    $scope.ps = Ps.query();
+  }, 5000);
 }
-MyCtrl2.$inject = [];

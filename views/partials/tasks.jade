@@ -1,0 +1,11 @@
+h1 Tasks are neat
+#tasks.row
+  .task.small-12.large-4.columns(ng-repeat="task in tasks")
+    h3
+      span.collection {{task.collection}}
+      |.
+      span.name  {{task.name}}
+    ul.no-bullet
+      li.command Command: {{task.command}}
+      li.cwd CWD: {{task.cwd}}
+      li.trigger Trigger: {{task.trigger}}
